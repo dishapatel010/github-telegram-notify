@@ -9,11 +9,12 @@ import (
 	"net/url"
 )
 
-func SendMessage(token string, chatID string, text string, markupText string, markupUrl string) (error types.Error) {
+func SendMessage(token string, chatID string, threadID string, text string, markupText string, markupUrl string) (error types.Error) {
 	apiBaseUri, _ := url.Parse("https://api.telegram.org")
 	req_url, _ := url.Parse(fmt.Sprint(apiBaseUri, "/bot", token, "/sendMessage"))
 	params := url.Values{}
 	params.Set("chat_id", chatID)
+        params.Set("message_thread_id", threadID)
 	params.Set("text", text)
 	params.Set("parse_mode", "html")
 	params.Set("disable_web_page_preview", "true")
