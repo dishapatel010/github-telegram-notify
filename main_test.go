@@ -24,7 +24,11 @@ func loadEnvs(t *testing.T) (string, string) {
 	if chatID == "" {
 		t.Fatal("Chat ID not specified in .env file")
 	}
-	return tg_token, chatID
+        threadID := os.Getenv("THREAD_ID")
+	if threadID == "" {
+		t.Fatal("Chat ID not specified in .env file")
+	}
+	return tg_token, chatID, threadID
 }
 
 func parse(t *testing.T, rawData []byte) (string, string, string) {
