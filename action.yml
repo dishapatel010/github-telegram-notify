@@ -1,4 +1,4 @@
-name: 'Github Telegram Notifier'
+name: 'Github Telegram Notifier - Topics'
 description: 'Sends commit updates to any chat in Telegram'
 author: 'wrench'
 inputs:
