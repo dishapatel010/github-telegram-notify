@@ -11,6 +11,7 @@ func main() {
 	tg_token := os.Getenv("INPUT_BOT_TOKEN")
 	chatID := os.Getenv("INPUT_CHAT_ID")
 	gitEventRaw := os.Getenv("INPUT_GIT_EVENT")
+        threadID := os.Getenv("INPUT_THREAD_ID")
 	print(gitEventRaw)
 	var gitEvent *types.Metadata
 	err := json.Unmarshal([]byte(gitEventRaw), &gitEvent)
@@ -21,7 +22,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	error := utils.SendMessage(tg_token, chatID, text, markupText, markupUrl)
+	error := utils.SendMessage(tg_token, chatID, threadID, text, markupText, markupUrl)
 	if error.Description != "" {
 		panic(error.String())
 	}
